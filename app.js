@@ -6,6 +6,7 @@ const port = 3000;
 const app = express();
 dotenv.config();
 const blogRoutes = require("./routes/blogRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 
 //connnect to db
@@ -23,6 +24,7 @@ mongoose.connect(dburi)
 //register view engine
 app.set("view engine", "ejs")
 
+// middlewares
 app.use(express.static("public"))
 app.use(express.urlencoded({extended: true}))
 
@@ -38,6 +40,8 @@ app.get("/about", (req, res)=>{
 
 /*Blogs route */
 app.use("/blogs/", blogRoutes);
+/*auth routes*/
+app.use(authRoutes);
 
 //404 page
 app.use((req, res)=>{
