@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
   username: {
@@ -15,10 +16,24 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    required: [true, "Enter a strong password"],
+    required: [true, "Enter a password"],
     minLength: [6, "Password too short"],
   }
 });
 
+userSchema.pre("save", async function (){
+  const saltRounds = 15;
+
+  try{
+    const salt = await bcrypt.genSalt(saltRounds);
+    this.password = await bcrypt.hash(this.password, salt);
+  } catch(err){
+    console.log(`Error from password hashing ${err}`);
+  }
+  
+})
+
+
 const User = mongoose.model("user", userSchema);
 module.exports = User;
+

@@ -102,10 +102,12 @@
     }
     .create-blog button{
       margin-top: 20px;
-      background: crimson;
       color: white;
       padding: 6px;
       border: 0;
       font-size: 1.2em;
       cursor: pointer;
+    }
+    label{
+      font-weight: bold;
     }

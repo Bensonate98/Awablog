@@ -26,7 +26,8 @@ app.set("view engine", "ejs")
 
 // middlewares
 app.use(express.static("public"))
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 
 /* Nav routes */
