@@ -21,6 +21,22 @@ const userSchema = new Schema({
   }
 });
 
+userSchema.statics.login = async function (email, password){
+  try{
+    const user = await this.findOne({"email": email});
+    if(!user){
+      throw Error("Invalid credentials");
+    }
+    const match = await bcrypt.compare(password, user.password);
+    if(!match){
+      throw Error("Invalid credentials");
+    }
+    return user;
+  }catch(err){
+    console.log(err)
+  }
+}
+
 userSchema.pre("save", async function (){
   const saltRounds = 15;
 
@@ -30,7 +46,6 @@ userSchema.pre("save", async function (){
   } catch(err){
     console.log(`Error from password hashing ${err}`);
   }
-  
 })
 
 

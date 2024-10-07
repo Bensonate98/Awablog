@@ -12,7 +12,7 @@ const signup_post = async (req, res)=>{
   const userData = req.body
   try{
     const user = await User.create(userData);
-    res.status(201).json({id: user._id, username: user.username, email: user.email});
+    res.status(201).json({id: user._id, username: user.username, email: user.email, message: "Registration successful"});
   }
   catch(err){
     const error = handleError(err); //handleError() is a custom utiltity function
@@ -24,8 +24,10 @@ const login_get = (req, res)=>{
   res.status(200).render("login")
 }
 
-const login_post = ()=>{
-
+const login_post = async (req, res)=>{
+  const{email, password} = (req.body);
+  const user = await User.login(email, password);
+  console.log(user);
 }
 
 module.exports = { signup_get, signup_post, login_get, login_post};
