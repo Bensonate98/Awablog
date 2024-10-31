@@ -14,6 +14,7 @@ const userSchema = new Schema({
     unique: true,
     lowercase: true
   },
+  
   password: {
     type: String,
     required: [true, "Enter a password"],
@@ -22,7 +23,6 @@ const userSchema = new Schema({
 });
 
 userSchema.statics.login = async function (email, password){
-  try{
     const user = await this.findOne({"email": email});
     if(!user){
       throw Error("Invalid credentials");
@@ -32,10 +32,7 @@ userSchema.statics.login = async function (email, password){
       throw Error("Invalid credentials");
     }
     return user;
-  }catch(err){
-    console.log(err)
   }
-}
 
 userSchema.pre("save", async function (){
   const saltRounds = 15;

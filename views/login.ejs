@@ -12,15 +12,15 @@
   <div class="container">
     <div class="form-container position-absolute top-50 start-50 translate-middle w-50">
       <h2 class="text-center py-3">sign in Here</h2>
-      <form>
+      <form action = "/login" method = "POST" >
     
         <div class="mb-3">
           <label for="userEmail" class="form-label">Email address</label>
-          <input type="email" class="form-control shadow-none border-danger" id="userEmail">
+          <input type="email" class="form-control shadow-none border-danger" id="userEmail" name="email" required>
         </div>
         <div class="mb-3">
           <label for="userPassword" class="form-label">Password</label>
-          <input type="password" class="form-control shadow-none border-danger" id="userPassword">
+          <input type="password" class="form-control shadow-none border-danger" id="userPassword" name="password" required>
         </div>
         <button type="submit" class="btn btn-danger fw-bold px-3">Login</button>
       </form>

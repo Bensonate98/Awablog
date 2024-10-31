@@ -12,22 +12,22 @@
   <div class="container">
     <div class="form-container position-absolute top-50 start-50 translate-middle w-50">
       <h2 class="text-center py-3">Signup Here</h2>
-      <form>
+      <form action="/signup" method="post">
         <div class="mb-3">
           <label for="user" class="form-label">Username</label>
-          <input type="email" class="form-control shadow-none border-danger" id="user">
+          <input type="text" class="form-control shadow-none border-danger" id="user" name="username" required>
         </div>
         <div class="mb-3">
           <label for="userEmail" class="form-label">Email address</label>
-          <input type="email" class="form-control shadow-none border-danger" id="userEmail">
+          <input type="email" class="form-control shadow-none border-danger" id="userEmail" name="email" required>
         </div>
         <div class="mb-3">
           <label for="userPassword" class="form-label">Password</label>
-          <input type="password" class="form-control shadow-none border-danger" id="userPassword">
+          <input type="password" class="form-control shadow-none border-danger" id="userPassword" name="password" required>
         </div>
         <div class="mb-3">
           <label for="passwordRetype" class="form-label">Re-type Password</label>
-          <input type="password" class="form-control shadow-none border-danger" id="passwordRetype">
+          <input type="password" class="form-control shadow-none border-danger" id="passwordRetype" name="cpassword" required>
         </div>
         <button type="submit" class="btn btn-danger fw-bold px-3">Submit</button>
       </form>

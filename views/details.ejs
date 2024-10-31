@@ -9,28 +9,28 @@
     <div class="content">
       <p><%= blog.body %></p>
     </div>
-    <a class="delete" data-doc="<%= blog._id %>">delete</a>
+    <!-- <a class="delete" data-doc="<%= blog._id %>">delete</a> -->
   </div>
 
   <%- include("./partials/footer.ejs") %>
 
   <script>
-    const deleteBtn = document.querySelector(".delete");
+  //   const deleteBtn = document.querySelector(".delete");
 
-    deleteBtn.addEventListener("click", (e)=>{
-      let resource = `/blogs/${e.target.dataset.doc}`
+  //   deleteBtn.addEventListener("click", (e)=>{
+  //     let resource = `/blogs/${e.target.dataset.doc}`
 
-      fetch(resource, {
-        method: "DELETE"
-      })
-      .then(data=>data.json())
-      .then(result=>{
-        window.location.href = result.redirect
-      })
-      .catch(err=>console.log("could not fetch delete data", err))
-    })
+  //     fetch(resource, {
+  //       method: "DELETE"
+  //     })
+  //     .then(data=>data.json())
+  //     .then(result=>{
+  //       window.location.href = result.redirect
+  //     })
+  //     .catch(err=>console.log("could not fetch delete data", err))
+  //   })
 
     
-  </script>
+  // </script>
 </body>
 </html>

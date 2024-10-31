@@ -17,7 +17,7 @@ const addBlog = (req,res)=>{
   const blog = new Blog(blogData)
   blog.save()
   .then(result=>{
-    res.redirect("/")
+    res.redirect("/blogs/")
   })
   .catch(err=>{
     console.log("Could not add blog data", err)
